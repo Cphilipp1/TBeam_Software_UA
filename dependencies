@@ -1,0 +1,11 @@
+# Core Libraries for Mathematical Operations and Data Handling
+numpy==1.26
+
+# Libraries for Visualization and Interactivity
+plotly==5.3.1
+
+# Libraries for GUI (Tkinter usually comes pre-installed with Python)
+# tkinter==0.1.0  # Uncomment if you need to install tkinter explicitly
+
+# Libraries for Testing
+pytest==6.2.5
