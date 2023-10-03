@@ -64,7 +64,7 @@ Activate the virtual environment:
 After activating the virtual environment, install the required packages:
 
 ```bash
-pip install -r requirements.txt
+pip install -r dependencies
 ```
 
 ### Running the Project
