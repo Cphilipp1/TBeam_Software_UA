@@ -28,3 +28,15 @@ def plot(receivers, estimated_transmitter_coords, transmitter):
     ax.set_zlabel('Z Coordinate (meters)')
     ax.set_title('Estimated and True Transmitter Locations in 3D')
     plt.show()
+
+def plotMany(x_vals, y_vals, error_grid):
+    fig = plt.figure(figsize=(12, 8))
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot_surface(x_vals, y_vals, error_grid, cmap='viridis')
+
+    ax.set_xlabel('X Coordinate')
+    ax.set_ylabel('Y Coordinate')
+    ax.set_zlabel('Localization Error (meters)')
+    ax.set_title('3D Plot of Localization Errors')
+
+    plt.show()
