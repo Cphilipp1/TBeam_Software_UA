@@ -40,14 +40,13 @@ def parallel_error_calculation(x_grid, y_grid, receivers, num_nanos):
     return error_grid
 
 def main():
-
-    transmitter = Node(500, 400, 0)  # Transmitter
-    num_nanos = 100
+    transmitter = Node(500, 400, 2)  # Transmitter
+    num_nanos = 31.25
     receivers = [
-        Node(0, 0, 0),  # Receiver 1
-        Node(0, 1000, 0),  # Receiver 2
-        Node(1000, 0, 0),  # Receiver 3
-        Node(1000, 1000, 0)  # Receiver 4
+        Node(0, 0, 5),  # Receiver 1
+        Node(0, 1000, 2),  # Receiver 2
+        Node(1000, 0, 3),  # Receiver 3
+        Node(1000, 1000, 1)  # Receiver 4
     ]
 
     single = False

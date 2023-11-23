@@ -37,6 +37,6 @@ def plotMany(x_vals, y_vals, error_grid, avg_error):
     ax.set_xlabel('X Coordinate')
     ax.set_ylabel('Y Coordinate')
     ax.set_zlabel('Localization Error (meters)')
-    ax.set_title('3D Plot of Localization Average Error: ' + str(avg_error))
+    ax.set_title('3D Plot of Localization Average Error: ' + str(avg_error) + ' meters')
 
     plt.show()
