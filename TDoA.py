@@ -32,10 +32,10 @@ def objective_function_3d(coords, receivers, tdoa, transmitter=Node(0,0,0)):
         error += (speed_of_light * (tdoa[i]) - (calculate_distance(Node(x, y, transmitter.z), receivers[i]) - calculate_distance(Node(x, y, transmitter.z), receivers[0]))) ** 2
     return error
 
-def calculate_tdoa(transmitter, receivers, num_nanos):
+def calculate_tdoa(transmitter, receivers, num_nanos, z=0):
     sim = True
     if sim: 
         tdoa = run_SIM(transmitter, receivers, num_nanos)
-    initial_guess_3d = [0, 0, 31]
+    initial_guess_3d = [0, 0, z]
     result_3d = minimize(lambda coords: objective_function_3d(coords, receivers, tdoa, transmitter=transmitter), initial_guess_3d, method='L-BFGS-B')
     return result_3d.x
