@@ -1,7 +1,7 @@
-from TDoA import Node
+from .TDoA import Node
 import numpy as np 
-from plot import plot, plotMany
-from TDoA import calculate_tdoa, calculate_distance
+from .plot import plot, plotMany
+from .TDoA import calculate_tdoa, calculate_distance
 import time
 from multiprocessing import Pool, Array
 import ctypes
@@ -10,9 +10,12 @@ def worker_function(batch_args):
     """ Process a batch of grid points """
     results = []
     for args in batch_args:
-        i, j, x_val, y_val, receivers, num_nanos, z = args
+        i, j, x_val, y_val, receivers, num_nanos, z, test = args
         transmitter = Node(x_val, y_val, z)
-        estimated_coords = calculate_tdoa(transmitter, receivers, num_nanos, z)
+        if test: 
+            estimated_coords = calculate_tdoa(transmitter, receivers, num_nanos, z, test=True)
+        else:    
+            estimated_coords = calculate_tdoa(transmitter, receivers, num_nanos, z)
         error_distance = calculate_distance(Node(*estimated_coords), transmitter)
         results.append((i, j, error_distance))
     return results
@@ -24,7 +27,7 @@ def parallel_error_calculation(x_grid, y_grid, receivers, num_nanos, transmitter
     error_grid = error_grid.reshape(x_grid.shape)
 
     # Prepare arguments for multiprocessing
-    grid_points = [(i, j, x_grid[i, j], y_grid[i, j], receivers, num_nanos, transmitter.z) for i in range(x_grid.shape[0]) for j in range(y_grid.shape[1])]
+    grid_points = [(i, j, x_grid[i, j], y_grid[i, j], receivers, num_nanos, transmitter.z, False) for i in range(x_grid.shape[0]) for j in range(y_grid.shape[1])]
     batch_size = 10  # adjust based on your system's capabilities
     batches = [grid_points[i:i + batch_size] for i in range(0, len(grid_points), batch_size)]
 
@@ -49,7 +52,7 @@ def main():
         Node(1000, 1000, 1)  # Receiver 4
     ]
 
-    single = False
+    single = True
     if single:         
         estimated_transmitter_coords = calculate_tdoa(transmitter, receivers, num_nanos, transmitter.z)
         print("Estimated Transmitter Location (x, y, z):", estimated_transmitter_coords)

@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-from TDoA import calculate_distance, calculate_distance_xy
-from TDoA import Node
+from .TDoA import calculate_distance, calculate_distance_xy
+from .TDoA import Node
 
 def plot(receivers, estimated_transmitter_coords, transmitter):
     fig = plt.figure(figsize=(10, 10))

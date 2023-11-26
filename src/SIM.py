@@ -4,13 +4,20 @@ import numpy as np
 nano_second = 1e-9
 speed_of_light = 3e8  # m/s
 time_for_fifteen_kilometers = 15000 / speed_of_light  # in seconds
-num_receivers = 4
+# num_receivers = 4
+
+# Define Node class to hold coordinates
+class Node:
+    def __init__(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
 
 # Function to calculate distance between two nodes
 def calculate_distance(node1, node2):
     return np.sqrt((node1.x - node2.x)**2 + (node1.y - node2.y)**2 + (node1.z - node2.z)**2)
 
-def run_SIM(transmitter, receivers, num_nanos, noise_mean=0, noise_std=1e-8, seed=None):
+def run_SIM(transmitter: Node, receivers, num_nanos, noise_mean=0, noise_std=1e-8, seed=None, num_receivers=4):
     """
     Simulates the propagation of light with Gaussian noise.
 
@@ -20,6 +27,7 @@ def run_SIM(transmitter, receivers, num_nanos, noise_mean=0, noise_std=1e-8, see
     :param noise_mean: Mean of the Gaussian noise (default is 0).
     :param noise_std: Standard deviation of the Gaussian noise (default is 1 ns).
     :param seed: Seed for the random number generator for reproducibility (default is None).
+    :param num_receivers: Number of receivers to log arrival time. (default is 4)
     :return: Time Differences of Arrival (TDoA) with Gaussian noise.
     """
     # Set the seed for reproducibility if provided
