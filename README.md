@@ -1,44 +1,43 @@
-Prerequisites
+###Prerequisites
 Before you begin, ensure you have the following installed on your system:
 
 Python 3.11
 pip (Python package manager)
-You can download Python from [Google](https://www.python.org), and pip is included with Python.
+You can download Python from [python.org](https://www.python.org), and pip is included with Python.
 
 Installation
 1. Step 1: Clone the Repository
 First, clone the repository to your local machine. You can do this by running:
 
-bash
-git clone [URL to Repository]
-cd [Repository Name]
-Replace [URL to Repository] with the URL of the Git repository and [Repository Name] with the name of the directory that Git creates.
+
+`git clone [https://github.com/Cphilipp1/TDoA_Software_UA]`
+`cd [TDoA_Software_UA]`
 
 2. Step 2: Install Dependencies
 Install the required Python packages using pip and the dependencies.txt file:
 
 bash
 Copy code
-'pip install -r dependencies.txt'
+`pip install -r dependencies.txt`
 This command will automatically download and install all the packages listed in dependencies.txt.
 
 3. Step 3: Navigate to the src Directory
 Change your current directory to the src directory:
 bash
-cd src
+`cd src`
 
 Running the Simulation
 To run the simulation, execute main.py from within the src directory:
 
 Testing the Simulation
-'python3.11 -m test.comprehensive'
+`python3.11 -m test.comprehensive`
 This will run all unit test cases on all funcional components of the simulation
 
 bash
-'python3.11 main.py'
+`python3.11 main.py`
 This command will start the simulation program and generate an interactive 3d simulated environment. Follow any on-screen prompts or instructions to interact with the simulation.
 
-Additional Information
+##Additional Information
 Make sure to follow any specific instructions or requirements detailed in the simulation program or provided by the developers.
 If you encounter any issues, refer to the troubleshooting section below or contact the support team.
 Troubleshooting
@@ -46,7 +45,7 @@ Dependency Installation Issues: If you encounter errors during the installation 
 Import Errors: Make sure you are running main.py from within the src directory, as the relative imports depend on the current directory structure.
 Python Version: This program is designed for Python 3.x. Running it on Python 2.x may lead to unexpected issues.
 
-TDoA_Software_UA Repository Overview
+###TDoA_Software_UA Repository Overview
 This repository contains the implementation of a Time Difference of Arrival (TDoA) system in Python. The system is designed to simulate and calculate the position of a transmitter based on the time difference of signals received at multiple receivers.
 File Descriptions
 1. SIM.py
